@@ -19,3 +19,12 @@ export const CommentValidation = z.object({
             .min(3,{ message: 'Minimum 3 Characters'})
             .max(2000),
 })
+
+export const QuizValidation = z.object({
+    thread: z.string()
+            .nonempty()
+            .min(3,{ message: 'Minimum 3 Characters'})
+            .max(500,{ message: 'Max 500 Characters'}),
+    accountId: z.string(),
+
+})

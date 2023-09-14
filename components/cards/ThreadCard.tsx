@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 // New
 import DeleteThread from "../forms/DeleteThread";
+import { Button } from "../ui/button";
 
 interface Props {
     id : string,
@@ -75,26 +76,22 @@ const ThreadCard = ({
                             </h4>
                         </Link>
                     
-                        <p className="mt-2 text-small-regular text-light-2">{content}</p>
+                        <p className={isComment ? 'mt-2 text-small-regular text-light-2'
+                                    : 'head-text mt-2 text-light-2' }>
+                            {content}   
+                        </p>
                     
                         {/* This div will hold icons to heart, reply, repost, share thread */}
                         {/* needs extra margin because isComment, done dynamically , if isComment, add mb-10*/}
                         <div className={`${isComment && 'mb-10'} mt-5 flex flex-col gap-3`}>
                             <div className="flex gap-3.5">
-                                <Image
-                                    src='/assets/heart-gray.svg' alt='heart'
-                                    width={24} height={24} className="cursor-pointer object-contain"
-                                />
+
                                 <Link href={`/thread/${id}`}>
                                     <Image
                                         src='/assets/reply.svg' alt='reply'
                                         width={24} height={24} className="cursor-pointer object-contain"
                                     />
                                 </Link>
-                                <Image
-                                    src='/assets/repost.svg' alt='repost'
-                                    width={24} height={24} className="cursor-pointer object-contain"
-                                />
                                 <Image
                                     src='/assets/share.svg' alt='share'
                                     width={24} height={24} className="cursor-pointer object-contain"
@@ -112,6 +109,16 @@ const ThreadCard = ({
 
                         </div>
                     </div>
+                    { !isComment &&
+                    <div className="mr-10">
+                        <Link href={`/quiz/${id}`}>
+                            <Button
+                                className="bg-primary-500 p-8"
+                            >
+                                Take Quiz
+                            </Button>
+                        </Link>
+                    </div>}
                 </div>
                 {/* Add Function to Delete Thread and show # replies*/}
                 <DeleteThread
