@@ -1,7 +1,19 @@
 "use client"
+
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 import { useState } from "react";
-import { Form } from "../ui/form";
-import { Button } from "../ui/button";
+
 
 
 interface QuizItem {
@@ -40,14 +52,20 @@ const TakeQuiz = ({quiz} : Props) => {
           if (selectedOptionIndex !== undefined) {
             const selectedOption = quizItem.options[selectedOptionIndex];
             if (selectedOption.isCorrect) {
+                console.log("Correct ", index);
               return acc + 1;
             }
           }
           return acc;
         }, 0);
+        const score = totalCorrect*100.0/quizObject.length;
+        console.log("SCORE IS ", score.toString() , "%");
         setScore(totalCorrect);
+        
+
       };
 
+ 
       const refreshPage = () => {
         window.location.reload();
       }
@@ -58,10 +76,10 @@ const TakeQuiz = ({quiz} : Props) => {
         <div>
             {quizObject.map((quizItem,quizIndex) => (
                 <div key={quizItem._id} className="border text-light-1">
-                    <h2>{quizItem.question}</h2>
+                    <h2 className="mx-3 my-2 text-heading4-medium">{quizIndex+1}. {quizItem.question}</h2>
                     <ul>
                         {quizItem.options.map((option, optionIndex) => (
-                            <li key={option._id}>
+                            <li key={option._id} className="mb-2 mx-3">
                                 <label>
                                     <input
                                         type="radio"
@@ -69,35 +87,37 @@ const TakeQuiz = ({quiz} : Props) => {
                                         value={optionIndex}
                                         onChange={()=> handleOptionSelect(quizIndex,optionIndex)}
                                     />
-                                    {option.text}
+                                    {" "}{option.text}
                                 </label>
                             </li>
                         ))}
                     </ul>
                 </div>
             ))}
-            <Button 
-                type="submit"
-                className="bg-primary-500 mt-10"
-                onClick={calculateScore}
-            >
-            Submit Quiz
-            </Button>
-            {score !== null && (
-                <>
-                <p className="text-light-2 mt-4">
-                    Your Score: {score} / {quizObject.length}
-                </p>
-                <Button 
-                    type="submit"
-                    className="bg-primary-500 mt-10"
-                    onClick={refreshPage}
-                >
-                    Retry
-                </Button>
-                </>
-            )}
-
+            <AlertDialog>
+                <AlertDialogTrigger
+                        className="bg-primary-500 rounded-lg mt-10 px-4 py-2 text-light-1 hover"
+                        onClick={calculateScore}
+                    >
+                    Submit Quiz
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Results</AlertDialogTitle>
+                        <AlertDialogDescription>        
+                            Your Score: {score} / {quizObject.length}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogAction onClick={refreshPage}>
+                            Retry
+                        </AlertDialogAction>
+                        <AlertDialogAction >
+                            Ok
+                        </AlertDialogAction>
+                    </AlertDialogFooter>       
+             </AlertDialogContent>
+            </AlertDialog>
       </div>
     );
 };

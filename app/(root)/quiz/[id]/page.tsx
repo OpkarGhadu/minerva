@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
 import { Button } from "@/components/ui/button";
  
+
+
 interface QuizItem {
     question: string;
     options: QuizOption[];
@@ -33,7 +35,7 @@ async function Page({params} : {params: {id:string}}){
     
     return(
       <section>
-        <h1 className="head-text text-light-1">{thread.text}</h1>
+        <h1 className="head-text text-light-1 mb-10">{thread.text}</h1>
         <TakeQuiz
           quiz={JSON.stringify(thread.quiz)}
          />
@@ -42,23 +44,4 @@ async function Page({params} : {params: {id:string}}){
 }
 
 export default Page;
-
-/*
-      <section className="flex flex-col w-full justify-start">
-        <h2 className="head-text">{thread.text}</h2>
-        {thread.quiz.map((q : QuizItem) => (
-            <TakeQuiz
-              key={q.question}
-              question={q.question}
-              options={q.options}
-            />
-        ))}      
-        <Button 
-            type="button"
-            className="bg-primary-500 mt-10"
-            >
-            Submit Quiz
-        </Button> 
-      </section>
-
-*/
+ 

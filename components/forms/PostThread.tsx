@@ -3,6 +3,7 @@
 import {
     Form,
     FormControl,
+    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -193,14 +194,13 @@ function PostThread({userId} : Props){
       ))}
 
       {/* FIELD TO ADD NEW QUESTIONS*/}
-      <div className="mb-25 focus flex flex-row">
+      <div className="focus flex flex-row">
         <Textarea
           rows={5}
-          placeholder="Ask a question like: 'What is the capital of Belgium?'"
+          placeholder="Let Chat-GPT create a quiz by asking a question like: 'What is the capital of Belgium?'"
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
         />
-     
         <Button 
             type="button"
             className="bg-primary-500 ml-5 p-6 py-8"
@@ -209,6 +209,8 @@ function PostThread({userId} : Props){
             Ask Question
         </Button>
       </div>
+
+     
 
 
       {/* Button to Submit Quiz*/}

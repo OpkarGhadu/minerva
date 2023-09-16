@@ -57,7 +57,7 @@ async function Page() {
                     the user wants to edit their bio. Therefore,
                     we send btnTitle to specify interaction
                 */}
-                tProfile
+                <AccountProfile
                     user={userData}
                     btnTitle="Continue"
                 />

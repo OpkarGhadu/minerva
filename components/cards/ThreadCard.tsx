@@ -110,7 +110,7 @@ const ThreadCard = ({
                         </div>
                     </div>
                     { !isComment &&
-                    <div className="mr-10">
+                    <div className=" flex flex-col justify-center mr-6">
                         <Link href={`/quiz/${id}`}>
                             <Button
                                 className="bg-primary-500 p-8"

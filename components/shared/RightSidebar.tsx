@@ -1,20 +1,3 @@
-const RightSidebar = () => {
-    return(
-        <section className="custom-scrollbar rightsidebar">
-            <div className="flex flex-1 flex-col justify-start">
-                <h3 className="text-heading4-medium text-light-1">Suggested Communities</h3>
-            </div>
-            <div className="flex flex-1 flex-col justify-start">
-                <h3 className="text-heading4-medium text-light-1">Suggested Users</h3>
-            </div>
-        </section>
-    )
-}
-
-export default RightSidebar;
-
-/*
-
 import { currentUser } from "@clerk/nextjs";
 import UserCard from "../cards/UserCard";
 import { fetchCommunities } from "@/lib/actions/community.actions";
@@ -44,7 +27,7 @@ async function RightSidebar() {
                 <h3 className="text-heading4-medium text-light-1">
                     Suggested Communities
                 </h3>
-                {/* Map through community, make each a card 
+                {/* Map through community, make each a card */}
                 <div className='mt-7 flex w-[350px] flex-col gap-9'>
                 {suggestedCommunities.communities.length > 0 ? (
                     <>
@@ -97,5 +80,3 @@ async function RightSidebar() {
 }
 
 export default RightSidebar;
-
-*/
