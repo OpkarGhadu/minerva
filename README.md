@@ -6,9 +6,11 @@ Minerva is a full stack social network designed to allows teachers and students 
 - Create classes, in which they can invite other members
 - Commenting on quizzes  
 
-## To Run: :runner:
+## Link
 
 minerva-alpha.vercel.app 
+
+## To Run: :runner:
 
 To run locally, first run the development server:
 
