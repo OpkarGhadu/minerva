@@ -15,7 +15,8 @@ export const connectToDB = async () => {
     }
     // If already connected
     if(isConnected){
-        return console.log("Already Connected to MongoDB");
+        console.log("Already Connected to MongoDB");
+        return; 
     }
     // Try connecting to instance
     try {
