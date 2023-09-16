@@ -8,7 +8,7 @@ Minerva is a full stack social network designed to allows teachers and students 
 
 ## Link
 
-minerva-alpha.vercel.app 
+[minerva-alpha.vercel.app](minerva-alpha.vercel.app) 
 
 ## To Run: :runner:
 
